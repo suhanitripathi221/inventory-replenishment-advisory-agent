@@ -1,0 +1,29 @@
+product_id,location,sku_name,category,on_hand,reserved,incoming_confirmed,incoming_unconfirmed,unit_cost,target_stock_level,safety_stock
+P101,LOC_EAST,Industrial Grade Bearing A10,Mechanical,15,5,10,20,45.5,150,25
+P102,LOC_EAST,Hydraulic Seal Ring 45mm,Hydraulics,120,10,0,50,12.0,100,15
+P103,LOC_WEST,Precision Linear Bushing,Mechanical,18,8,85,150,68.0,120,20
+P900,LOC_EAST,Experimental Nano-Coating SKU,Chemicals,5,0,0,0,310.0,50,10
+P204,LOC_CENTRAL,High-Temp Ceramic Insulator,Electrical,22,4,15,30,85.0,160,30
+P305,LOC_WEST,Stainless Steel Hex Bolt M8x50,Fasteners,40,10,0,0,0.75,500,80
+P104,LOC_EAST,Heavy-Duty Timing Belt T10,Transmission,35,5,20,40,32.5,180,30
+P105,LOC_WEST,Viton O-Ring Assortment Pack,Seals,85,15,0,0,24.0,150,20
+P106,LOC_CENTRAL,Cast Iron Flange Coupling 25mm,Mechanical,12,2,5,15,95.0,80,15
+P107,LOC_EAST,Polyurethane Pneumatic Tubing 8mm,Pneumatics,210,30,50,100,1.8,400,50
+P108,LOC_WEST,Brass Solenoid Valve 24V DC,Valves,14,2,10,0,75.0,90,15
+P109,LOC_CENTRAL,Inductive Proximity Sensor M12,Sensors,45,5,0,25,42.0,110,20
+P110,LOC_EAST,Digital Pressure Gauge 0-10 Bar,Instrumentation,8,3,0,12,130.0,50,10
+P111,LOC_WEST,Copper Motor Bushing Sleeve,Bearings,60,10,40,0,15.5,200,30
+P112,LOC_CENTRAL,Aluminum Din Rail 1m,Hardware,140,20,0,0,6.2,250,40
+P113,LOC_EAST,Fiberglass Thermal Wrap 50mm,Thermal,18,0,10,30,28.0,100,15
+P114,LOC_WEST,Spur Gear 20 Teeth Module 2,Gears,25,5,0,0,38.0,120,20
+P115,LOC_CENTRAL,Optical Rotary Encoder 1024PPR,Sensors,6,1,0,10,165.0,40,8
+P116,LOC_EAST,Graphite Packing Cord 6mm,Gaskets,90,15,30,0,19.0,220,35
+P117,LOC_WEST,Zinc Plated Spring Washer M10,Fasteners,1200,200,500,1000,0.12,3000,400
+P118,LOC_CENTRAL,Nylon Cable Drag Chain 15x30,Accessories,30,4,12,0,22.5,140,25
+P119,LOC_EAST,Pillow Block Bearing UCP205,Bearings,16,6,0,20,52.0,90,15
+P120,LOC_WEST,Silicone Thermal Paste 100g,Chemicals,55,5,20,0,18.0,150,25
+P121,LOC_CENTRAL,Tungsten Carbide End Mill 6mm,Tooling,40,10,0,0,34.0,130,20
+P122,LOC_EAST,Stainless Steel Shim Stock 0.1mm,Raw Materials,22,2,10,0,44.0,110,15
+P123,LOC_WEST,Quick Release Air Coupler 1/4,Pneumatics,70,15,30,50,8.5,250,35
+P124,LOC_CENTRAL,Helical Compression Spring 50mm,Springs,95,20,0,0,4.3,300,50
+P125,LOC_EAST,Dual Channel Solid State Relay,Electrical,19,3,10,15,58.0,100,18

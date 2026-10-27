@@ -1,0 +1,55 @@
+# Corporate Inventory Replenishment & Reorder Policy
+Document Name: Corporate Inventory Replenishment & Reorder Policy
+Policy Version: v2.4
+Effective Date: 2024-03-01
+Author: HCL Supply Chain Excellence Group
+Status: Approved & Mandatory
+
+============================================================
+SECTION 1: Scope, Purpose & Governance
+============================================================
+This policy governs all inventory management, stock level audits, and automated replenishment proposals across all regional fulfillment centers and regional warehouses (LOC_EAST, LOC_WEST, LOC_CENTRAL). The objective is to eliminate stockouts while minimizing holding costs and avoiding inventory deadweight. All algorithmic replenishment agents must adhere strictly to these operational boundaries.
+
+============================================================
+SECTION 2: Calculation of Available Inventory Position
+============================================================
+Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment.
+Rule 2.1: Available inventory position MUST strictly be computed using the deterministic equation:
+    Available Inventory Position = On-Hand Stock - Reserved Stock + Confirmed Incoming Stock
+Rule 2.2: Unconfirmed purchase orders or unverified incoming shipments SHALL NOT be counted towards available inventory under any circumstance. Only purchase orders marked with confirmed transit status qualify as Confirmed Incoming Stock.
+Rule 2.3: Reserved stock represents inventory allocated to confirmed customer sales orders awaiting shipment and must always be deducted.
+
+============================================================
+SECTION 3: Safe Daily Sales Velocity & Data Sufficiency
+============================================================
+Rule 3.1: Average Daily Sales (ADS) velocity must be derived from historical sales transactions across a rolling lookback window (default: 30 days).
+Rule 3.2: INSUFFICIENT DATA GUARDRAIL: If a SKU has no historical transaction records in the specified lookback window, or has fewer than the minimum required observations, the system SHALL NOT hallucinate, invent, or guess sales velocity.
+Rule 3.3: In the case of insufficient data (such as product P900), the system must immediately flag status as "INSUFFICIENT_DATA", set recommended order quantity to 0 (or alert state), and halt automatic ordering pending human operational audit.
+
+============================================================
+SECTION 4: Reorder Point (ROP) Determination
+============================================================
+Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold.
+Rule 4.2: The Reorder Point MUST be deterministically computed as:
+    Reorder Point (ROP) = (Average Daily Sales * Supplier Lead Time Days) + Safety Stock
+Rule 4.3: Arithmetic operations must be executed deterministically in Python code. An LLM or language model shall never be permitted to perform numerical arithmetic.
+Rule 4.4: Safety Stock is defined as the buffer stock required to protect against demand volatility and lead-time delays, as designated in master SKU parameters.
+
+============================================================
+SECTION 5: Order Quantity Optimization & Lot Sizing
+============================================================
+Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0).
+Rule 5.2: When Available Inventory Position falls strictly below the Reorder Point, the baseline shortage is:
+    Gross Shortage = Target Stock Level - Available Inventory Position
+Rule 5.3: Minimum Order Quantity (MOQ) Constraint: The recommended order quantity must never be less than the Supplier Minimum Order Quantity (MOQ). If Gross Shortage < MOQ, the order quantity must be raised to MOQ.
+Rule 5.4: Pack Size / Lot Ceiling Rule: Order quantities must be rounded up to the nearest integer multiple of the Supplier Pack Size using ceiling division:
+    Final Recommended Quantity = ceil(max(Gross Shortage, MOQ) / Pack Size) * Pack Size
+Rule 5.5: Every replenishment recommendation must articulate its assumptions, detailing the target stock level, available inventory position, and lot sizing calculations.
+
+============================================================
+SECTION 6: Missing Data Handling, Interactive Prompts & Idempotency
+============================================================
+Rule 6.1: When essential data parameters—specifically Supplier Lead Time—are missing or null (e.g., product P204), the agent must not fabricate values. The agent must pause execution, transition to the "Ask" stage, and prompt the human operator for the verified lead time in days.
+Rule 6.2: Once the operator supplies the missing value, the agent resumes execution through the state machine.
+Rule 6.3: Idempotency Key Registration: To eliminate duplicate order submissions during network retries or identical re-evaluations, every generated replenishment plan must be registered with a unique Plan ID, timestamp, and a cryptographic/hash idempotency key based on (product_id, location, target_stock_level, as_of_date).
+Rule 6.4: If a duplicate plan request is processed, the system must recognize the existing idempotency key and return the original Plan ID and plan record without creating a duplicate.

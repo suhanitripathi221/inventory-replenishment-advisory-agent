@@ -1,0 +1,103 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /MediaBox [0 0 612 792] /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 4069 >>
+stream
+BT
+/F1 9 Tf
+50 740 Td
+14 TL
+(# Corporate Inventory Replenishment & Reorder Policy) Tj
+T* (Document Name: Corporate Inventory Replenishment & Reorder Policy) Tj
+T* (Policy Version: v2.4) Tj
+T* (Effective Date: 2024-03-01) Tj
+T* (Author: HCL Supply Chain Excellence Group) Tj
+T* (Status: Approved & Mandatory) Tj
+T* () Tj
+T* (============================================================) Tj
+T* (SECTION 1: Scope, Purpose & Governance) Tj
+T* (============================================================) Tj
+T* (This policy governs all inventory management, stock level audits, and automated replenishment proposals across all regional fulfillment centers and regional warehouses \(LOC_EAST, LOC_WEST, LOC_CENTRAL\). The objective is to eliminate stockouts while minimizing holding costs and avoiding inventory deadweight. All algorithmic replenishment agents must adhere strictly to these operational boundaries.) Tj
+T* () Tj
+T* (============================================================) Tj
+T* (SECTION 2: Calculation of Available Inventory Position) Tj
+T* (============================================================) Tj
+T* (Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment.) Tj
+T* (Rule 2.1: Available inventory position MUST strictly be computed using the deterministic equation:) Tj
+T* (    Available Inventory Position = On-Hand Stock - Reserved Stock + Confirmed Incoming Stock) Tj
+T* (Rule 2.2: Unconfirmed purchase orders or unverified incoming shipments SHALL NOT be counted towards available inventory under any circumstance. Only purchase orders marked with confirmed transit status qualify as Confirmed Incoming Stock.) Tj
+T* (Rule 2.3: Reserved stock represents inventory allocated to confirmed customer sales orders awaiting shipment and must always be deducted.) Tj
+T* () Tj
+T* (============================================================) Tj
+T* (SECTION 3: Safe Daily Sales Velocity & Data Sufficiency) Tj
+T* (============================================================) Tj
+T* (Rule 3.1: Average Daily Sales \(ADS\) velocity must be derived from historical sales transactions across a rolling lookback window \(default: 30 days\).) Tj
+T* (Rule 3.2: INSUFFICIENT DATA GUARDRAIL: If a SKU has no historical transaction records in the specified lookback window, or has fewer than the minimum required observations, the system SHALL NOT hallucinate, invent, or guess sales velocity.) Tj
+T* (Rule 3.3: In the case of insufficient data \(such as product P900\), the system must immediately flag status as "INSUFFICIENT_DATA", set recommended order quantity to 0 \(or alert state\), and halt automatic ordering pending human operational audit.) Tj
+T* () Tj
+T* (============================================================) Tj
+T* (SECTION 4: Reorder Point \(ROP\) Determination) Tj
+T* (============================================================) Tj
+T* (Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold.) Tj
+T* (Rule 4.2: The Reorder Point MUST be deterministically computed as:) Tj
+T* (    Reorder Point \(ROP\) = \(Average Daily Sales * Supplier Lead Time Days\) + Safety Stock) Tj
+T* (Rule 4.3: Arithmetic operations must be executed deterministically in Python code. An LLM or language model shall never be permitted to perform numerical arithmetic.) Tj
+T* (Rule 4.4: Safety Stock is defined as the buffer stock required to protect against demand volatility and lead-time delays, as designated in master SKU parameters.) Tj
+T* () Tj
+T* (============================================================) Tj
+T* (SECTION 5: Order Quantity Optimization & Lot Sizing) Tj
+T* (============================================================) Tj
+T* (Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated \(Recommended Quantity = 0\).) Tj
+T* (Rule 5.2: When Available Inventory Position falls strictly below the Reorder Point, the baseline shortage is:) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /MediaBox [0 0 612 792] /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 1942 >>
+stream
+BT
+/F1 9 Tf
+50 740 Td
+14 TL
+(    Gross Shortage = Target Stock Level - Available Inventory Position) Tj
+T* (Rule 5.3: Minimum Order Quantity \(MOQ\) Constraint: The recommended order quantity must never be less than the Supplier Minimum Order Quantity \(MOQ\). If Gross Shortage < MOQ, the order quantity must be raised to MOQ.) Tj
+T* (Rule 5.4: Pack Size / Lot Ceiling Rule: Order quantities must be rounded up to the nearest integer multiple of the Supplier Pack Size using ceiling division:) Tj
+T* (    Final Recommended Quantity = ceil\(max\(Gross Shortage, MOQ\) / Pack Size\) * Pack Size) Tj
+T* (Rule 5.5: Every replenishment recommendation must articulate its assumptions, detailing the target stock level, available inventory position, and lot sizing calculations.) Tj
+T* () Tj
+T* (============================================================) Tj
+T* (SECTION 6: Missing Data Handling, Interactive Prompts & Idempotency) Tj
+T* (============================================================) Tj
+T* (Rule 6.1: When essential data parameters?specifically Supplier Lead Time?are missing or null \(e.g., product P204\), the agent must not fabricate values. The agent must pause execution, transition to the "Ask" stage, and prompt the human operator for the verified lead time in days.) Tj
+T* (Rule 6.2: Once the operator supplies the missing value, the agent resumes execution through the state machine.) Tj
+T* (Rule 6.3: Idempotency Key Registration: To eliminate duplicate order submissions during network retries or identical re-evaluations, every generated replenishment plan must be registered with a unique Plan ID, timestamp, and a cryptographic/hash idempotency key based on \(product_id, location, target_stock_level, as_of_date\).) Tj
+T* (Rule 6.4: If a duplicate plan request is processed, the system must recognize the existing idempotency key and return the original Plan ID and plan record without creating a duplicate.) Tj
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000004423 00000 n 
+0000004598 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+6592
+%%EOF

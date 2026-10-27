@@ -1,0 +1,1890 @@
+[
+  {
+    "plan_id": "PLAN-98181F00",
+    "idempotency_key": "468fe026b4cbcdf3",
+    "created_at": "2026-10-24T06:53:04.025178Z",
+    "product_id": "P103",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P103",
+      "location": "LOC_WEST",
+      "sku_name": "Precision Linear Bushing",
+      "category": "Mechanical",
+      "on_hand": 18,
+      "reserved": 8,
+      "incoming_confirmed": 85,
+      "incoming_unconfirmed": 150,
+      "available_position": 95,
+      "unit_cost": 68.0,
+      "target_stock_level": 120,
+      "safety_stock": 20,
+      "calculation_breakdown": "Available (95) = On-Hand (18) - Reserved (8) + Confirmed Incoming (85) [Unconfirmed Incoming (150) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P103",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 65,
+      "data_points_count": 30,
+      "average_daily_sales": 2.1667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 2.17 units/day over 30 days (65 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 2.1667,
+      "lead_time_days": 21.0,
+      "safety_stock": 20,
+      "reorder_point": 65.5,
+      "formula_used": "ROP (65.50) = (Average Daily Sales (2.17) * Lead Time Days (21.0)) + Safety Stock (20)"
+    },
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 95,
+      "reorder_point": 65.5,
+      "target_stock_level": 120,
+      "gross_shortage": 0,
+      "supplier_moq": 40,
+      "pack_size": 10,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "Available inventory position (95) is greater than or equal to the reorder point (65.50). Stock is currently sufficient; no replenishment required."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "SUFFICIENT_STOCK",
+    "notes": "Current inventory position (95) satisfies lead time demand and safety buffer."
+  },
+  {
+    "plan_id": "PLAN-B300B26E",
+    "idempotency_key": "f3ed7e8b2353f36b",
+    "created_at": "2026-10-24T06:53:04.050765Z",
+    "product_id": "P101",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P101",
+      "location": "LOC_EAST",
+      "sku_name": "Industrial Grade Bearing A10",
+      "category": "Mechanical",
+      "on_hand": 15,
+      "reserved": 5,
+      "incoming_confirmed": 10,
+      "incoming_unconfirmed": 20,
+      "available_position": 20,
+      "unit_cost": 45.5,
+      "target_stock_level": 150,
+      "safety_stock": 25,
+      "calculation_breakdown": "Available (20) = On-Hand (15) - Reserved (5) + Confirmed Incoming (10) [Unconfirmed Incoming (20) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P101",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 103,
+      "data_points_count": 31,
+      "average_daily_sales": 3.4333,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 3.43 units/day over 30 days (103 total units across 31 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 3.4333,
+      "lead_time_days": 14.0,
+      "safety_stock": 25,
+      "reorder_point": 73.07,
+      "formula_used": "ROP (73.07) = (Average Daily Sales (3.43) * Lead Time Days (14.0)) + Safety Stock (25)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 20,
+      "reorder_point": 73.07,
+      "target_stock_level": 150,
+      "gross_shortage": 130,
+      "supplier_moq": 50,
+      "pack_size": 10,
+      "recommended_order_quantity": 130,
+      "estimated_cost": 5915.0,
+      "assumptions": [
+        "Available position (20) has breached reorder point (73.07). Gross shortage to reach target (150) is 130 units.",
+        "Gross shortage (130) satisfies supplier minimum order quantity (50).",
+        "Order quantity 130 aligns exactly with pack size 10 (13 packs)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 130 units recommended."
+  },
+  {
+    "plan_id": "PLAN-6ECF9146",
+    "idempotency_key": "a134d64ae6a7c759",
+    "created_at": "2026-10-24T06:53:04.064886Z",
+    "product_id": "P204",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P204",
+      "location": "LOC_CENTRAL",
+      "sku_name": "High-Temp Ceramic Insulator",
+      "category": "Electrical",
+      "on_hand": 22,
+      "reserved": 4,
+      "incoming_confirmed": 15,
+      "incoming_unconfirmed": 30,
+      "available_position": 33,
+      "unit_cost": 85.0,
+      "target_stock_level": 160,
+      "safety_stock": 30,
+      "calculation_breakdown": "Available (33) = On-Hand (22) - Reserved (4) + Confirmed Incoming (15) [Unconfirmed Incoming (30) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P204",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 132,
+      "data_points_count": 30,
+      "average_daily_sales": 4.4,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 4.40 units/day over 30 days (132 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 4.4,
+      "lead_time_days": 20.0,
+      "safety_stock": 30,
+      "reorder_point": 118.0,
+      "formula_used": "ROP (118.00) = (Average Daily Sales (4.40) * Lead Time Days (20.0)) + Safety Stock (30)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 33,
+      "reorder_point": 118.0,
+      "target_stock_level": 160,
+      "gross_shortage": 127,
+      "supplier_moq": 5,
+      "pack_size": 1,
+      "recommended_order_quantity": 127,
+      "estimated_cost": 10795.0,
+      "assumptions": [
+        "Available position (33) has breached reorder point (118.00). Gross shortage to reach target (160) is 127 units.",
+        "Gross shortage (127) satisfies supplier minimum order quantity (5).",
+        "No pack size multiplier constraint (individual unit packaging)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 127 units recommended."
+  },
+  {
+    "plan_id": "PLAN-C00C6130",
+    "idempotency_key": "cb00f90d9820ce28",
+    "created_at": "2026-10-24T06:53:04.080809Z",
+    "product_id": "P900",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P900",
+      "location": "LOC_EAST",
+      "sku_name": "Experimental Nano-Coating SKU",
+      "category": "Chemicals",
+      "on_hand": 5,
+      "reserved": 0,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 5,
+      "unit_cost": 310.0,
+      "target_stock_level": 50,
+      "safety_stock": 10,
+      "calculation_breakdown": "Available (5) = On-Hand (5) - Reserved (0) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P900",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P900 at LOC_EAST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 5,
+      "reorder_point": 0.0,
+      "target_stock_level": 50,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-00A27867",
+    "idempotency_key": "eac0cfc606e5cb04",
+    "created_at": "2026-10-24T06:53:04.095793Z",
+    "product_id": "P102",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P102",
+      "location": "LOC_EAST",
+      "sku_name": "Hydraulic Seal Ring 45mm",
+      "category": "Hydraulics",
+      "on_hand": 120,
+      "reserved": 10,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 50,
+      "available_position": 110,
+      "unit_cost": 12.0,
+      "target_stock_level": 100,
+      "safety_stock": 15,
+      "calculation_breakdown": "Available (110) = On-Hand (120) - Reserved (10) + Confirmed Incoming (0) [Unconfirmed Incoming (50) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P102",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 38,
+      "data_points_count": 30,
+      "average_daily_sales": 1.2667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 1.27 units/day over 30 days (38 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 1.2667,
+      "lead_time_days": 10.0,
+      "safety_stock": 15,
+      "reorder_point": 27.67,
+      "formula_used": "ROP (27.67) = (Average Daily Sales (1.27) * Lead Time Days (10.0)) + Safety Stock (15)"
+    },
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 110,
+      "reorder_point": 27.67,
+      "target_stock_level": 100,
+      "gross_shortage": 0,
+      "supplier_moq": 25,
+      "pack_size": 5,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "Available inventory position (110) is greater than or equal to the reorder point (27.67). Stock is currently sufficient; no replenishment required."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "SUFFICIENT_STOCK",
+    "notes": "Current inventory position (110) satisfies lead time demand and safety buffer."
+  },
+  {
+    "plan_id": "PLAN-1F228EB8",
+    "idempotency_key": "64ba47cd8a3b3da8",
+    "created_at": "2026-10-24T06:53:36.168641Z",
+    "product_id": "P305",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P305",
+      "location": "LOC_WEST",
+      "sku_name": "Stainless Steel Hex Bolt M8x50",
+      "category": "Fasteners",
+      "on_hand": 40,
+      "reserved": 10,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 30,
+      "unit_cost": 0.75,
+      "target_stock_level": 500,
+      "safety_stock": 80,
+      "calculation_breakdown": "Available (30) = On-Hand (40) - Reserved (10) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P305",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 435,
+      "data_points_count": 30,
+      "average_daily_sales": 14.5,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 14.50 units/day over 30 days (435 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 14.5,
+      "lead_time_days": 7.0,
+      "safety_stock": 80,
+      "reorder_point": 181.5,
+      "formula_used": "ROP (181.50) = (Average Daily Sales (14.50) * Lead Time Days (7.0)) + Safety Stock (80)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 30,
+      "reorder_point": 181.5,
+      "target_stock_level": 500,
+      "gross_shortage": 470,
+      "supplier_moq": 100,
+      "pack_size": 50,
+      "recommended_order_quantity": 500,
+      "estimated_cost": 375.0,
+      "assumptions": [
+        "Available position (30) has breached reorder point (181.50). Gross shortage to reach target (500) is 470 units.",
+        "Gross shortage (470) satisfies supplier minimum order quantity (100).",
+        "Supplier pack size constraint of 50 units applied: rounded up from 470 to 500 units (10 full packs)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 500 units recommended."
+  },
+  {
+    "plan_id": "PLAN-FFC08294",
+    "idempotency_key": "b1b5162d4ac4c796",
+    "created_at": "2026-10-24T06:53:36.182831Z",
+    "product_id": "P104",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P104",
+      "location": "LOC_EAST",
+      "sku_name": "Heavy-Duty Timing Belt T10",
+      "category": "Transmission",
+      "on_hand": 35,
+      "reserved": 5,
+      "incoming_confirmed": 20,
+      "incoming_unconfirmed": 40,
+      "available_position": 50,
+      "unit_cost": 32.5,
+      "target_stock_level": 180,
+      "safety_stock": 30,
+      "calculation_breakdown": "Available (50) = On-Hand (35) - Reserved (5) + Confirmed Incoming (20) [Unconfirmed Incoming (40) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P104",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 159,
+      "data_points_count": 30,
+      "average_daily_sales": 5.3,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 5.30 units/day over 30 days (159 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 5.3,
+      "lead_time_days": 12.0,
+      "safety_stock": 30,
+      "reorder_point": 93.6,
+      "formula_used": "ROP (93.60) = (Average Daily Sales (5.30) * Lead Time Days (12.0)) + Safety Stock (30)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 50,
+      "reorder_point": 93.6,
+      "target_stock_level": 180,
+      "gross_shortage": 130,
+      "supplier_moq": 30,
+      "pack_size": 5,
+      "recommended_order_quantity": 130,
+      "estimated_cost": 4225.0,
+      "assumptions": [
+        "Available position (50) has breached reorder point (93.60). Gross shortage to reach target (180) is 130 units.",
+        "Gross shortage (130) satisfies supplier minimum order quantity (30).",
+        "Order quantity 130 aligns exactly with pack size 5 (26 packs)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 130 units recommended."
+  },
+  {
+    "plan_id": "PLAN-12B9D358",
+    "idempotency_key": "3af8e316f4135312",
+    "created_at": "2026-10-24T06:53:36.195093Z",
+    "product_id": "P105",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P105",
+      "location": "LOC_WEST",
+      "sku_name": "Viton O-Ring Assortment Pack",
+      "category": "Seals",
+      "on_hand": 85,
+      "reserved": 15,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 70,
+      "unit_cost": 24.0,
+      "target_stock_level": 150,
+      "safety_stock": 20,
+      "calculation_breakdown": "Available (70) = On-Hand (85) - Reserved (15) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P105",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 113,
+      "data_points_count": 30,
+      "average_daily_sales": 3.7667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 3.77 units/day over 30 days (113 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 3.7667,
+      "lead_time_days": 10.0,
+      "safety_stock": 20,
+      "reorder_point": 57.67,
+      "formula_used": "ROP (57.67) = (Average Daily Sales (3.77) * Lead Time Days (10.0)) + Safety Stock (20)"
+    },
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 70,
+      "reorder_point": 57.67,
+      "target_stock_level": 150,
+      "gross_shortage": 0,
+      "supplier_moq": 40,
+      "pack_size": 10,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "Available inventory position (70) is greater than or equal to the reorder point (57.67). Stock is currently sufficient; no replenishment required."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "SUFFICIENT_STOCK",
+    "notes": "Current inventory position (70) satisfies lead time demand and safety buffer."
+  },
+  {
+    "plan_id": "PLAN-AA8FCB72",
+    "idempotency_key": "f32b1ee0309ba78e",
+    "created_at": "2026-10-24T06:53:36.208066Z",
+    "product_id": "P106",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P106",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Cast Iron Flange Coupling 25mm",
+      "category": "Mechanical",
+      "on_hand": 12,
+      "reserved": 2,
+      "incoming_confirmed": 5,
+      "incoming_unconfirmed": 15,
+      "available_position": 15,
+      "unit_cost": 95.0,
+      "target_stock_level": 80,
+      "safety_stock": 15,
+      "calculation_breakdown": "Available (15) = On-Hand (12) - Reserved (2) + Confirmed Incoming (5) [Unconfirmed Incoming (15) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P106",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 35,
+      "data_points_count": 30,
+      "average_daily_sales": 1.1667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 1.17 units/day over 30 days (35 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 1.1667,
+      "lead_time_days": 18.0,
+      "safety_stock": 15,
+      "reorder_point": 36.0,
+      "formula_used": "ROP (36.00) = (Average Daily Sales (1.17) * Lead Time Days (18.0)) + Safety Stock (15)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 15,
+      "reorder_point": 36.0,
+      "target_stock_level": 80,
+      "gross_shortage": 65,
+      "supplier_moq": 15,
+      "pack_size": 1,
+      "recommended_order_quantity": 65,
+      "estimated_cost": 6175.0,
+      "assumptions": [
+        "Available position (15) has breached reorder point (36.00). Gross shortage to reach target (80) is 65 units.",
+        "Gross shortage (65) satisfies supplier minimum order quantity (15).",
+        "No pack size multiplier constraint (individual unit packaging)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 65 units recommended."
+  },
+  {
+    "plan_id": "PLAN-336BF44F",
+    "idempotency_key": "f89441f6e4abd1b8",
+    "created_at": "2026-10-24T06:53:36.222388Z",
+    "product_id": "P107",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P107",
+      "location": "LOC_EAST",
+      "sku_name": "Polyurethane Pneumatic Tubing 8mm",
+      "category": "Pneumatics",
+      "on_hand": 210,
+      "reserved": 30,
+      "incoming_confirmed": 50,
+      "incoming_unconfirmed": 100,
+      "available_position": 230,
+      "unit_cost": 1.8,
+      "target_stock_level": 400,
+      "safety_stock": 50,
+      "calculation_breakdown": "Available (230) = On-Hand (210) - Reserved (30) + Confirmed Incoming (50) [Unconfirmed Incoming (100) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P107",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 290,
+      "data_points_count": 30,
+      "average_daily_sales": 9.6667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 9.67 units/day over 30 days (290 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 9.6667,
+      "lead_time_days": 8.0,
+      "safety_stock": 50,
+      "reorder_point": 127.33,
+      "formula_used": "ROP (127.33) = (Average Daily Sales (9.67) * Lead Time Days (8.0)) + Safety Stock (50)"
+    },
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 230,
+      "reorder_point": 127.33,
+      "target_stock_level": 400,
+      "gross_shortage": 0,
+      "supplier_moq": 100,
+      "pack_size": 25,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "Available inventory position (230) is greater than or equal to the reorder point (127.33). Stock is currently sufficient; no replenishment required."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "SUFFICIENT_STOCK",
+    "notes": "Current inventory position (230) satisfies lead time demand and safety buffer."
+  },
+  {
+    "plan_id": "PLAN-9AD75140",
+    "idempotency_key": "3612f8b8c927f99e",
+    "created_at": "2026-10-24T06:53:36.236434Z",
+    "product_id": "P108",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P108",
+      "location": "LOC_WEST",
+      "sku_name": "Brass Solenoid Valve 24V DC",
+      "category": "Valves",
+      "on_hand": 14,
+      "reserved": 2,
+      "incoming_confirmed": 10,
+      "incoming_unconfirmed": 0,
+      "available_position": 22,
+      "unit_cost": 75.0,
+      "target_stock_level": 90,
+      "safety_stock": 15,
+      "calculation_breakdown": "Available (22) = On-Hand (14) - Reserved (2) + Confirmed Incoming (10) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P108",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 66,
+      "data_points_count": 30,
+      "average_daily_sales": 2.2,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 2.20 units/day over 30 days (66 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 2.2,
+      "lead_time_days": 15.0,
+      "safety_stock": 15,
+      "reorder_point": 48.0,
+      "formula_used": "ROP (48.00) = (Average Daily Sales (2.20) * Lead Time Days (15.0)) + Safety Stock (15)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 22,
+      "reorder_point": 48.0,
+      "target_stock_level": 90,
+      "gross_shortage": 68,
+      "supplier_moq": 20,
+      "pack_size": 2,
+      "recommended_order_quantity": 68,
+      "estimated_cost": 5100.0,
+      "assumptions": [
+        "Available position (22) has breached reorder point (48.00). Gross shortage to reach target (90) is 68 units.",
+        "Gross shortage (68) satisfies supplier minimum order quantity (20).",
+        "Order quantity 68 aligns exactly with pack size 2 (34 packs)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 68 units recommended."
+  },
+  {
+    "plan_id": "PLAN-12E07176",
+    "idempotency_key": "9c7c5546937f2750",
+    "created_at": "2026-10-24T06:53:36.251474Z",
+    "product_id": "P109",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P109",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Inductive Proximity Sensor M12",
+      "category": "Sensors",
+      "on_hand": 45,
+      "reserved": 5,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 25,
+      "available_position": 40,
+      "unit_cost": 42.0,
+      "target_stock_level": 110,
+      "safety_stock": 20,
+      "calculation_breakdown": "Available (40) = On-Hand (45) - Reserved (5) + Confirmed Incoming (0) [Unconfirmed Incoming (25) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P109",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 101,
+      "data_points_count": 30,
+      "average_daily_sales": 3.3667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 3.37 units/day over 30 days (101 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 3.3667,
+      "lead_time_days": 14.0,
+      "safety_stock": 20,
+      "reorder_point": 67.13,
+      "formula_used": "ROP (67.13) = (Average Daily Sales (3.37) * Lead Time Days (14.0)) + Safety Stock (20)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 40,
+      "reorder_point": 67.13,
+      "target_stock_level": 110,
+      "gross_shortage": 70,
+      "supplier_moq": 25,
+      "pack_size": 5,
+      "recommended_order_quantity": 70,
+      "estimated_cost": 2940.0,
+      "assumptions": [
+        "Available position (40) has breached reorder point (67.13). Gross shortage to reach target (110) is 70 units.",
+        "Gross shortage (70) satisfies supplier minimum order quantity (25).",
+        "Order quantity 70 aligns exactly with pack size 5 (14 packs)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 70 units recommended."
+  },
+  {
+    "plan_id": "PLAN-8FE87889",
+    "idempotency_key": "0fcdf9ad96532dd1",
+    "created_at": "2026-10-24T06:53:36.264900Z",
+    "product_id": "P110",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P110",
+      "location": "LOC_EAST",
+      "sku_name": "Digital Pressure Gauge 0-10 Bar",
+      "category": "Instrumentation",
+      "on_hand": 8,
+      "reserved": 3,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 12,
+      "available_position": 5,
+      "unit_cost": 130.0,
+      "target_stock_level": 50,
+      "safety_stock": 10,
+      "calculation_breakdown": "Available (5) = On-Hand (8) - Reserved (3) + Confirmed Incoming (0) [Unconfirmed Incoming (12) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P110",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 32,
+      "data_points_count": 30,
+      "average_daily_sales": 1.0667,
+      "is_sufficient": true,
+      "status": "SUFFICIENT_DATA",
+      "message": "Calculated average daily sales: 1.07 units/day over 30 days (32 total units across 30 logs)."
+    },
+    "reorder_point_result": {
+      "average_daily_sales": 1.0667,
+      "lead_time_days": 20.0,
+      "safety_stock": 10,
+      "reorder_point": 31.33,
+      "formula_used": "ROP (31.33) = (Average Daily Sales (1.07) * Lead Time Days (20.0)) + Safety Stock (10)"
+    },
+    "recommendation": {
+      "should_reorder": true,
+      "available_position": 5,
+      "reorder_point": 31.33,
+      "target_stock_level": 50,
+      "gross_shortage": 45,
+      "supplier_moq": 10,
+      "pack_size": 2,
+      "recommended_order_quantity": 46,
+      "estimated_cost": 5980.0,
+      "assumptions": [
+        "Available position (5) has breached reorder point (31.33). Gross shortage to reach target (50) is 45 units.",
+        "Gross shortage (45) satisfies supplier minimum order quantity (10).",
+        "Supplier pack size constraint of 2 units applied: rounded up from 45 to 46 units (23 full packs)."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 5: Order Quantity Optimization & Lot Sizing",
+          "reference": "reorder_policy.pdf (Section 5, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 5.1: If Available Inventory Position is greater than or equal to the Reorder Point, no order should be generated (Recommended Quantity = 0)."
+        },
+        {
+          "section": "SECTION 4: Reorder Point (ROP) Determination",
+          "reference": "reorder_policy.pdf (Section 4, Page 2)",
+          "policy_version": "v2.4",
+          "excerpt": "Rule 4.1: The Reorder Point triggers a replenishment action when Available Inventory Position falls strictly below this threshold."
+        },
+        {
+          "section": "SECTION 2: Calculation of Available Inventory Position",
+          "reference": "reorder_policy.pdf (Section 2, Page 1)",
+          "policy_version": "v2.4",
+          "excerpt": "Available inventory position determines the actual stock available to satisfy demand and pipeline replenishment."
+        }
+      ]
+    },
+    "status": "APPROVED_REORDER",
+    "notes": "Order of 46 units recommended."
+  },
+  {
+    "plan_id": "PLAN-F1120AC1",
+    "idempotency_key": "3be1e57774b327fc",
+    "created_at": "2026-10-24T06:53:36.278544Z",
+    "product_id": "P111",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P111",
+      "location": "LOC_WEST",
+      "sku_name": "Copper Motor Bushing Sleeve",
+      "category": "Bearings",
+      "on_hand": 60,
+      "reserved": 10,
+      "incoming_confirmed": 40,
+      "incoming_unconfirmed": 0,
+      "available_position": 90,
+      "unit_cost": 15.5,
+      "target_stock_level": 200,
+      "safety_stock": 30,
+      "calculation_breakdown": "Available (90) = On-Hand (60) - Reserved (10) + Confirmed Incoming (40) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P111",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P111 at LOC_WEST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 90,
+      "reorder_point": 0.0,
+      "target_stock_level": 200,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-C303B596",
+    "idempotency_key": "c97a734cf168cb14",
+    "created_at": "2026-10-24T06:53:36.292008Z",
+    "product_id": "P112",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P112",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Aluminum Din Rail 1m",
+      "category": "Hardware",
+      "on_hand": 140,
+      "reserved": 20,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 120,
+      "unit_cost": 6.2,
+      "target_stock_level": 250,
+      "safety_stock": 40,
+      "calculation_breakdown": "Available (120) = On-Hand (140) - Reserved (20) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P112",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P112 at LOC_CENTRAL in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 120,
+      "reorder_point": 0.0,
+      "target_stock_level": 250,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-46AB2CEB",
+    "idempotency_key": "09606ba2356a8dbc",
+    "created_at": "2026-10-24T06:53:36.306256Z",
+    "product_id": "P113",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P113",
+      "location": "LOC_EAST",
+      "sku_name": "Fiberglass Thermal Wrap 50mm",
+      "category": "Thermal",
+      "on_hand": 18,
+      "reserved": 0,
+      "incoming_confirmed": 10,
+      "incoming_unconfirmed": 30,
+      "available_position": 28,
+      "unit_cost": 28.0,
+      "target_stock_level": 100,
+      "safety_stock": 15,
+      "calculation_breakdown": "Available (28) = On-Hand (18) - Reserved (0) + Confirmed Incoming (10) [Unconfirmed Incoming (30) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P113",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P113 at LOC_EAST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 28,
+      "reorder_point": 0.0,
+      "target_stock_level": 100,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-98D7C60E",
+    "idempotency_key": "6d2ff5254987df81",
+    "created_at": "2026-10-24T06:53:36.321186Z",
+    "product_id": "P114",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P114",
+      "location": "LOC_WEST",
+      "sku_name": "Spur Gear 20 Teeth Module 2",
+      "category": "Gears",
+      "on_hand": 25,
+      "reserved": 5,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 20,
+      "unit_cost": 38.0,
+      "target_stock_level": 120,
+      "safety_stock": 20,
+      "calculation_breakdown": "Available (20) = On-Hand (25) - Reserved (5) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P114",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P114 at LOC_WEST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 20,
+      "reorder_point": 0.0,
+      "target_stock_level": 120,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-5EDDDF93",
+    "idempotency_key": "b3438d998c0af486",
+    "created_at": "2026-10-24T06:53:36.339349Z",
+    "product_id": "P115",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P115",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Optical Rotary Encoder 1024PPR",
+      "category": "Sensors",
+      "on_hand": 6,
+      "reserved": 1,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 10,
+      "available_position": 5,
+      "unit_cost": 165.0,
+      "target_stock_level": 40,
+      "safety_stock": 8,
+      "calculation_breakdown": "Available (5) = On-Hand (6) - Reserved (1) + Confirmed Incoming (0) [Unconfirmed Incoming (10) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P115",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P115 at LOC_CENTRAL in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 5,
+      "reorder_point": 0.0,
+      "target_stock_level": 40,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-871CAE6B",
+    "idempotency_key": "027ccacd7034d513",
+    "created_at": "2026-10-24T06:53:36.355954Z",
+    "product_id": "P116",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P116",
+      "location": "LOC_EAST",
+      "sku_name": "Graphite Packing Cord 6mm",
+      "category": "Gaskets",
+      "on_hand": 90,
+      "reserved": 15,
+      "incoming_confirmed": 30,
+      "incoming_unconfirmed": 0,
+      "available_position": 105,
+      "unit_cost": 19.0,
+      "target_stock_level": 220,
+      "safety_stock": 35,
+      "calculation_breakdown": "Available (105) = On-Hand (90) - Reserved (15) + Confirmed Incoming (30) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P116",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P116 at LOC_EAST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 105,
+      "reorder_point": 0.0,
+      "target_stock_level": 220,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-DC75EE33",
+    "idempotency_key": "50dcf97c1a1d2294",
+    "created_at": "2026-10-24T06:53:36.370985Z",
+    "product_id": "P117",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P117",
+      "location": "LOC_WEST",
+      "sku_name": "Zinc Plated Spring Washer M10",
+      "category": "Fasteners",
+      "on_hand": 1200,
+      "reserved": 200,
+      "incoming_confirmed": 500,
+      "incoming_unconfirmed": 1000,
+      "available_position": 1500,
+      "unit_cost": 0.12,
+      "target_stock_level": 3000,
+      "safety_stock": 400,
+      "calculation_breakdown": "Available (1500) = On-Hand (1200) - Reserved (200) + Confirmed Incoming (500) [Unconfirmed Incoming (1000) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P117",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P117 at LOC_WEST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 1500,
+      "reorder_point": 0.0,
+      "target_stock_level": 3000,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-4C20A827",
+    "idempotency_key": "ad21380abd3bad88",
+    "created_at": "2026-10-24T06:53:36.386702Z",
+    "product_id": "P118",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P118",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Nylon Cable Drag Chain 15x30",
+      "category": "Accessories",
+      "on_hand": 30,
+      "reserved": 4,
+      "incoming_confirmed": 12,
+      "incoming_unconfirmed": 0,
+      "available_position": 38,
+      "unit_cost": 22.5,
+      "target_stock_level": 140,
+      "safety_stock": 25,
+      "calculation_breakdown": "Available (38) = On-Hand (30) - Reserved (4) + Confirmed Incoming (12) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P118",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P118 at LOC_CENTRAL in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 38,
+      "reorder_point": 0.0,
+      "target_stock_level": 140,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-F7D69F0D",
+    "idempotency_key": "7ce13cbf9052e63c",
+    "created_at": "2026-10-24T06:53:36.403305Z",
+    "product_id": "P119",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P119",
+      "location": "LOC_EAST",
+      "sku_name": "Pillow Block Bearing UCP205",
+      "category": "Bearings",
+      "on_hand": 16,
+      "reserved": 6,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 20,
+      "available_position": 10,
+      "unit_cost": 52.0,
+      "target_stock_level": 90,
+      "safety_stock": 15,
+      "calculation_breakdown": "Available (10) = On-Hand (16) - Reserved (6) + Confirmed Incoming (0) [Unconfirmed Incoming (20) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P119",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P119 at LOC_EAST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 10,
+      "reorder_point": 0.0,
+      "target_stock_level": 90,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-B9F88B68",
+    "idempotency_key": "301db47d1aab2df2",
+    "created_at": "2026-10-24T06:53:36.418476Z",
+    "product_id": "P120",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P120",
+      "location": "LOC_WEST",
+      "sku_name": "Silicone Thermal Paste 100g",
+      "category": "Chemicals",
+      "on_hand": 55,
+      "reserved": 5,
+      "incoming_confirmed": 20,
+      "incoming_unconfirmed": 0,
+      "available_position": 70,
+      "unit_cost": 18.0,
+      "target_stock_level": 150,
+      "safety_stock": 25,
+      "calculation_breakdown": "Available (70) = On-Hand (55) - Reserved (5) + Confirmed Incoming (20) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P120",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P120 at LOC_WEST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 70,
+      "reorder_point": 0.0,
+      "target_stock_level": 150,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-2AF7F5C2",
+    "idempotency_key": "22931fcafded3c65",
+    "created_at": "2026-10-24T06:53:36.432606Z",
+    "product_id": "P121",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P121",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Tungsten Carbide End Mill 6mm",
+      "category": "Tooling",
+      "on_hand": 40,
+      "reserved": 10,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 30,
+      "unit_cost": 34.0,
+      "target_stock_level": 130,
+      "safety_stock": 20,
+      "calculation_breakdown": "Available (30) = On-Hand (40) - Reserved (10) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P121",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P121 at LOC_CENTRAL in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 30,
+      "reorder_point": 0.0,
+      "target_stock_level": 130,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-53060D20",
+    "idempotency_key": "7aa14023343a4151",
+    "created_at": "2026-10-24T06:53:36.446899Z",
+    "product_id": "P122",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P122",
+      "location": "LOC_EAST",
+      "sku_name": "Stainless Steel Shim Stock 0.1mm",
+      "category": "Raw Materials",
+      "on_hand": 22,
+      "reserved": 2,
+      "incoming_confirmed": 10,
+      "incoming_unconfirmed": 0,
+      "available_position": 30,
+      "unit_cost": 44.0,
+      "target_stock_level": 110,
+      "safety_stock": 15,
+      "calculation_breakdown": "Available (30) = On-Hand (22) - Reserved (2) + Confirmed Incoming (10) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P122",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P122 at LOC_EAST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 30,
+      "reorder_point": 0.0,
+      "target_stock_level": 110,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-3DEAAD34",
+    "idempotency_key": "ad678b40dbd06822",
+    "created_at": "2026-10-24T06:53:36.462567Z",
+    "product_id": "P123",
+    "location": "LOC_WEST",
+    "stock_level": {
+      "product_id": "P123",
+      "location": "LOC_WEST",
+      "sku_name": "Quick Release Air Coupler 1/4",
+      "category": "Pneumatics",
+      "on_hand": 70,
+      "reserved": 15,
+      "incoming_confirmed": 30,
+      "incoming_unconfirmed": 50,
+      "available_position": 85,
+      "unit_cost": 8.5,
+      "target_stock_level": 250,
+      "safety_stock": 35,
+      "calculation_breakdown": "Available (85) = On-Hand (70) - Reserved (15) + Confirmed Incoming (30) [Unconfirmed Incoming (50) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P123",
+      "location": "LOC_WEST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P123 at LOC_WEST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 85,
+      "reorder_point": 0.0,
+      "target_stock_level": 250,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-72E3884F",
+    "idempotency_key": "ead24dcf456c8fb9",
+    "created_at": "2026-10-24T06:53:36.482802Z",
+    "product_id": "P124",
+    "location": "LOC_CENTRAL",
+    "stock_level": {
+      "product_id": "P124",
+      "location": "LOC_CENTRAL",
+      "sku_name": "Helical Compression Spring 50mm",
+      "category": "Springs",
+      "on_hand": 95,
+      "reserved": 20,
+      "incoming_confirmed": 0,
+      "incoming_unconfirmed": 0,
+      "available_position": 75,
+      "unit_cost": 4.3,
+      "target_stock_level": 300,
+      "safety_stock": 50,
+      "calculation_breakdown": "Available (75) = On-Hand (95) - Reserved (20) + Confirmed Incoming (0) [Unconfirmed Incoming (0) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P124",
+      "location": "LOC_CENTRAL",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P124 at LOC_CENTRAL in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 75,
+      "reorder_point": 0.0,
+      "target_stock_level": 300,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  },
+  {
+    "plan_id": "PLAN-F91EC8E8",
+    "idempotency_key": "bc947dc61e1a80a4",
+    "created_at": "2026-10-24T06:53:36.502757Z",
+    "product_id": "P125",
+    "location": "LOC_EAST",
+    "stock_level": {
+      "product_id": "P125",
+      "location": "LOC_EAST",
+      "sku_name": "Dual Channel Solid State Relay",
+      "category": "Electrical",
+      "on_hand": 19,
+      "reserved": 3,
+      "incoming_confirmed": 10,
+      "incoming_unconfirmed": 15,
+      "available_position": 26,
+      "unit_cost": 58.0,
+      "target_stock_level": 100,
+      "safety_stock": 18,
+      "calculation_breakdown": "Available (26) = On-Hand (19) - Reserved (3) + Confirmed Incoming (10) [Unconfirmed Incoming (15) ignored per Rule 2.2]"
+    },
+    "sales_stats": {
+      "product_id": "P125",
+      "location": "LOC_EAST",
+      "window_days": 30,
+      "total_sales": 0,
+      "data_points_count": 0,
+      "average_daily_sales": 0.0,
+      "is_sufficient": false,
+      "status": "INSUFFICIENT_DATA",
+      "message": "No sales history exists for SKU P125 at LOC_EAST in the 30-day window. Sales velocity cannot be determined."
+    },
+    "reorder_point_result": null,
+    "recommendation": {
+      "should_reorder": false,
+      "available_position": 26,
+      "reorder_point": 0.0,
+      "target_stock_level": 100,
+      "gross_shortage": 0,
+      "supplier_moq": 0,
+      "pack_size": 1,
+      "recommended_order_quantity": 0,
+      "estimated_cost": 0.0,
+      "assumptions": [
+        "INSUFFICIENT DATA GUARDRAIL: No historical sales transactions recorded in sales dataset.",
+        "Strict policy prohibition: System refuses to invent or hallucinate demand velocity.",
+        "Action required: Human supply chain analyst audit before manual purchase requisition."
+      ],
+      "policy_citations": [
+        {
+          "section": "SECTION 3: Safe Daily Sales Velocity & Data Sufficiency",
+          "reference": "reorder_policy.pdf (Rule 3.2 & Rule 3.3)",
+          "policy_version": "v2.4",
+          "excerpt": "If a SKU has no historical transaction records, the system SHALL NOT hallucinate, invent, or guess sales velocity. Flag INSUFFICIENT_DATA."
+        }
+      ]
+    },
+    "status": "HALTED_INSUFFICIENT_DATA",
+    "notes": "Automated replenishment halted due to absence of sales history. Human audit required."
+  }
+]

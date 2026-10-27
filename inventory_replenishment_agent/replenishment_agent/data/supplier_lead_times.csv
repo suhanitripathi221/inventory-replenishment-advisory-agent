@@ -1,0 +1,29 @@
+product_id,supplier_id,supplier_name,lead_time_days,minimum_order_quantity,pack_size,reliability_score
+P101,SUP-901,Apex Precision Bearings Ltd,14,50,10,0.96
+P102,SUP-902,Vulkan Hydraulic Seals Inc,10,25,5,0.98
+P103,SUP-903,Koyo Linear Motion Systems,21,40,10,0.94
+P900,SUP-999,AeroTech Specialty Chem Corp,30,10,1,0.85
+P204,SUP-904,CeramTech Global Industries,,20,5,0.9
+P305,SUP-905,FastenerWorld Manufacturing,7,100,50,0.99
+P104,SUP-906,Gates Industrial Power Belts,12,30,5,0.95
+P105,SUP-907,Parker Seal & Elastomers,10,40,10,0.97
+P106,SUP-908,Nordic Flange Works AB,18,15,1,0.92
+P107,SUP-909,Festo Pneumatics Supply,8,100,25,0.98
+P108,SUP-910,SMC Fluid Automation,15,20,2,0.96
+P109,SUP-911,Omron Sensing Components,14,25,5,0.97
+P110,SUP-912,Wika Instrumentation Ltd,20,10,2,0.93
+P111,SUP-913,Federal Bronze Co,14,50,10,0.95
+P112,SUP-914,Unistrut Aluminum Systems,7,50,10,0.99
+P113,SUP-915,ThermaTherm Insulation Co,16,20,5,0.91
+P114,SUP-916,Martin Sprocket & Gear,18,25,5,0.94
+P115,SUP-917,Heidenhain Encoder Works,25,10,1,0.97
+P116,SUP-918,Garlock Sealing Technologies,12,30,5,0.95
+P117,SUP-919,FastenerWorld Manufacturing,5,500,100,0.98
+P118,SUP-920,Igus Energy Chains LLC,14,20,4,0.96
+P119,SUP-921,SKF Reliability Systems,15,20,4,0.97
+P120,SUP-922,Dow Chemical Lubricants,10,30,6,0.94
+P121,SUP-923,Sandvik Coromant Cutting Tools,9,20,5,0.99
+P122,SUP-924,Precision Shim & Coil Co,14,25,5,0.93
+P123,SUP-925,Milton Pneumatic Fittings,7,50,10,0.96
+P124,SUP-926,Associated Spring Raymond,11,60,12,0.95
+P125,SUP-927,Crydom Solid State Relays,16,20,4,0.97
