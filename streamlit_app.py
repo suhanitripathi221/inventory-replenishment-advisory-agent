@@ -18,7 +18,7 @@ st.write(
     "replenishment recommendations using the Python agent."
 )
 
-project_dir = Path(__file__).resolve().parent
+project_dir = Path(__file__).resolve().parent / "replenishment_agent"
 main_file = project_dir / "main.py"
 
 st.subheader("Inventory Analysis")
